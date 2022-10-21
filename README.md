@@ -1,2 +1,1 @@
 # CCWikipediaPagesExtractor
-# CCWikipediaPagesExtractor

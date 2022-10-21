@@ -177,20 +177,9 @@ func ReadWarc(recordsReader *warc.Reader, writersChannel chan *PagesList,
 				originalUrl := record.Header.Get("WARC-Target-URI")
 				originalUrl = sanitizeString(originalUrl)
 
-				//b,_:=io.ReadAll(record.Content)
-				//if first<57{
-				//	fmt.Println(string(b))
-				//	fmt.Println(originalUrl)
-				//	first=first+1
-				//}
-
-
-
 
 
 				pageUrl, err := url.Parse(originalUrl)
-				//fmt.Println(pageUrl)
-				//
 
 
 
@@ -226,12 +215,6 @@ func ReadWarc(recordsReader *warc.Reader, writersChannel chan *PagesList,
 								httpStatusCode = line[9:12]
 							}
 						}
-
-						//if strings.HasPrefix(line, "Location:") {
-						//	if len(line) >= 10 {
-						//		redirectLocation = line[10:]
-						//	}
-						//}
 
 						if strings.HasPrefix(line, "Content-Type:") {
 							if len(line) >= 14 {
@@ -313,19 +296,11 @@ func hasWikimediaLinks(body io.Reader) bool {
 				if !strings.HasPrefix(hrefValue, "javascript:") &&
 					!strings.HasPrefix(hrefValue, "#") {
 
-					//normalizedHrefValue,_ := getAbsoluteNormalized(pageUrl, hrefValue)
 
-					//fmt.Println("\t"+pageUrl.Host)
-
-					//if strings.Contains(pageUrl.Host,"blogspot") {
-					//	fmt.Println(pageUrl.Host)
-					//	fmt.Println(isWikimediaProjectFromURL(hrefValue))
-					//}
-					//if strings.Contains(pageUrl.Host,"03fotos") {
 						if len(hrefValue) > 0 && isWikimediaProjectFromURL(hrefValue) {
 							hasLinks=true
 						}
-					//}
+
 
 				}
 
